@@ -1,6 +1,6 @@
 # MongoDB with Python Workshop
-Hosted by Amine M. Boulouma, contact and questions: [amine.boulouma.com](https://amine.boulouma.com)
-- [Learn MongoDB with Python](https://www.youtube.com/watch?v=IrWAHTEtqgg&ab_channel=AmineM.Boulouma)
+Hosted by Amin M. Boulouma, contact and questions: [amine.boulouma.com](https://amine.boulouma.com)
+- [Learn MongoDB with Python](https://youtu.be/QgezT0KKu98)
 - [Source code](https://github.com/amboulouma/mongodb-python-workshop)
 
 
@@ -85,7 +85,7 @@ post_id
 
 
 
-    ObjectId('60b70b1a44ca0fefd174f09b')
+    ObjectId('60b7100120bfc60abf20bcbd')
 
 
 
@@ -119,7 +119,7 @@ pprint.pprint(posts.find_one())
 
 
 ```python
-pprint.pprint(posts.find_one({"author": "Amin"}))
+pprint.pprint(posts.find_one({"text": "MongoDB with Python"}))
 ```
 
     {'_id': ObjectId('60b70b1a44ca0fefd174f09b'),
@@ -145,7 +145,7 @@ post_id
 
 
 
-    ObjectId('60b70b1a44ca0fefd174f09b')
+    ObjectId('60b7100120bfc60abf20bcbd')
 
 
 
@@ -154,9 +154,9 @@ post_id
 pprint.pprint(posts.find_one({"_id": post_id}))
 ```
 
-    {'_id': ObjectId('60b70b1a44ca0fefd174f09b'),
+    {'_id': ObjectId('60b7100120bfc60abf20bcbd'),
      'author': 'Amin',
-     'date': datetime.datetime(2021, 6, 2, 4, 37, 46, 983000),
+     'date': datetime.datetime(2021, 6, 2, 4, 58, 27, 840000),
      'tags': ['mongodb', 'python', 'pymongo'],
      'text': 'MongoDB with Python'}
 
@@ -185,7 +185,7 @@ str(post_id)
 
 
 
-    '60b70b1a44ca0fefd174f09b'
+    '60b7100120bfc60abf20bcbd'
 
 
 
@@ -220,13 +220,12 @@ new_posts = [{"author": "Amin",
 
 result = posts.insert_many(new_posts)
 result.inserted_ids
-
 ```
 
 
 
 
-    [ObjectId('60b70c9c44ca0fefd174f09c'), ObjectId('60b70c9c44ca0fefd174f09d')]
+    [ObjectId('60b7109120bfc60abf20bcbe'), ObjectId('60b7109120bfc60abf20bcbf')]
 
 
 
@@ -254,25 +253,35 @@ for post in posts.find():
      'date': datetime.datetime(2009, 11, 10, 10, 45),
      'text': 'That is amazing!',
      'title': 'Flask with python'}
-
-
-
-```python
->>> for post in posts.find({"author": "Amin"}):
-    pprint.pprint(post)
-```
-
-    {'_id': ObjectId('60b70b1a44ca0fefd174f09b'),
+    {'_id': ObjectId('60b7100120bfc60abf20bcbd'),
      'author': 'Amin',
-     'date': datetime.datetime(2021, 6, 2, 4, 37, 46, 983000),
+     'date': datetime.datetime(2021, 6, 2, 4, 58, 27, 840000),
      'tags': ['mongodb', 'python', 'pymongo'],
      'text': 'MongoDB with Python'}
-    {'_id': ObjectId('60b70c9c44ca0fefd174f09c'),
+    {'_id': ObjectId('60b7109120bfc60abf20bcbe'),
      'author': 'Amin',
      'date': datetime.datetime(2009, 11, 12, 11, 14),
      'tags': ['elasticsearch', 'python'],
      'text': 'ElasticSearch With Python'}
+    {'_id': ObjectId('60b7109120bfc60abf20bcbf'),
+     'author': 'Amin',
+     'date': datetime.datetime(2009, 11, 10, 10, 45),
+     'text': 'That is amazing!',
+     'title': 'Flask with python'}
+
+
+
+```python
+for post in posts.find({"text": "That is amazing!"}):
+    pprint.pprint(post)
+```
+
     {'_id': ObjectId('60b70c9c44ca0fefd174f09d'),
+     'author': 'Amin',
+     'date': datetime.datetime(2009, 11, 10, 10, 45),
+     'text': 'That is amazing!',
+     'title': 'Flask with python'}
+    {'_id': ObjectId('60b7109120bfc60abf20bcbf'),
      'author': 'Amin',
      'date': datetime.datetime(2009, 11, 10, 10, 45),
      'text': 'That is amazing!',
@@ -289,7 +298,7 @@ posts.count_documents({})
 
 
 
-    3
+    6
 
 
 
@@ -301,6 +310,6 @@ posts.count_documents({"text": "ElasticSearch With Python"})
 
 
 
-    1
+    2
 
 

@@ -23,7 +23,7 @@ MongoDB: https://docs.mongodb.com/manual/installation/
 
 >$ mongod
 
-## Making a Connection with MongoClient¶
+## Making a Connection with MongoClient
 
 
 The first step when working with PyMongo is to create a MongoClient to the running mongod instance. Doing so is easy:
